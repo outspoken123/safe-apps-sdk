@@ -1,0 +1,24 @@
+import { SafeConnector } from '@gnosis.pm/safe-apps-wagmi';
+
+const chains = ...
+
+const client = createClient({
+    connectors: [
+        new SafeConnector({ chains }),
+        new MetaMaskConnector({ chains }),
+        new WalletConnectConnector({
+            chains,
+            options: {
+                qrcode: true,
+            },
+        }),
+        new InjectedConnector({
+            chains,
+            options: {
+                name: 'Injected',
+                shimDisconnect: true,
+            },
+        }),
+    ],
+    ...
+});
